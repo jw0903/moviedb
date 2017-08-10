@@ -45,5 +45,35 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 
 5 /router/index.js进行路由的设置
+  先对网站路由有大概的思考，比如，这个项目总共有5个页面，需要路由进行跳转
+  具体为：
+  
+        / (主页面）
+        其中主要包含MovieTag组件，向该组件传递正在上映的影片信息。
+        /MovieTag组件：主体部分是正在上映影片的展示，采用v-for的形式循环显示，重点在于点击电影图片时展示该电影的详细信息
+        点击电影图片触发showDetail(id)事件，传递的参数为该电影的id，路由跳转到movieDetail。
+        先通过mounted的getMovieDetail取得电影详情的数据存入movieDetail中，在进行上一步
+        该页面中的computed ...mapGetters{
+            'movieDetail',//获取数据并创建data对象，使组件内部有数据进行填充。
+        }
+  
+         /upcoming (即将放映电影页面)
+         先dispatch("getUpcoming")触发函数，将数据存入state中的upcoming中，再由页面进行显示
+         
+         
+         /top250 (top250页面)
+         先dispatch("getTop250")触发该函数，将state中的ranking250存入数据待用
+         computed计算属性中的方法ranking250返回ranklist
+         top250电影展示用的是searchTag组件，向组件传递ranklist数据(即包含top250电影的数据)
+         
+         
+         /movieDetail (电影详情页面)
+         由点击电影主页面、upcoming页面、top250页面中的电影图片跳转而得到，this.$router.push{path:'/movieDetail',query:{id:id}})进行跳转。
+         
+         
+         /search (电影搜索结果页面)
+         先dispatch("getSearchList")触发函数，将数据存入state的searchList中，传入searchTag组件中，便于组件数据的获取
 
 
+
+   
