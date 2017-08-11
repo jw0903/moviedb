@@ -7,12 +7,15 @@ export const MOVING = 'MOVING'
 export const MOVING_DETAIL = 'MOVING_DETAIL';
 export const PAGE_LOAD = 'PAGE_LOAD';
 export const ITEM_LOAD = 'ITEM_LOAD';
+export const SEARCH_TEXT = 'SEARCH_TEXT';
 
 export default{
     state: {
         id: '',
         pageload: true,
         itemload: true,
+        searchText: "",
+        searchList: {},
         movieDetail:{
 
         }
@@ -27,6 +30,16 @@ export default{
               store.commit(MOVING_DETAIL, res.data);
               store.commit(PAGE_LOAD, false);
             })
+        },
+        getSearchText(store, text){
+            store.commit(SEARCH_TEXT, text);
+        },
+        getSearchDetail(store){
+            vm.$http.get('/api/movie/search?q='+this.searchText)
+                .then((res) => {
+                    this.searchList = res.data;
+                    store.commit(PAGE_LOAD, false);
+                })
         },
         page_load(store,flag) {
             store.commit(PAGE_LOAD, flag);
@@ -47,6 +60,9 @@ export default{
         },
         ITEM_LOAD(state, flag){
             state.itemload = flag;
+        },
+        SEARCH_TEXT(state, text) {
+            state.searchText = text;
         }
     },
     getters: {
@@ -58,6 +74,12 @@ export default{
         },
         itemLoading: state => {
             return state.itemload;
+        },
+        searchText: state => {
+            return state.searchText;
+        },
+        searchList: state => {
+            return state.searchList;
         }
     }
 }

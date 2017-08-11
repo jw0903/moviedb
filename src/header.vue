@@ -3,8 +3,8 @@
         <div class="content" >
             <div class="search">
                 <h1>豆瓣电影</h1>
-                <el-input type="text" placeholder="电影、演员、影院、电视剧" icon="search"></el-input>
-                <button>搜索</button>
+                <el-input type="text" placeholder="电影、演员、影院、电视剧" v-model="content" @keyup.enter.native="searchMovie"></el-input>
+                <el-button icon="search" @click="searchMovie"></el-button>
             </div>
             <div class="nav">
                 <ul>
@@ -21,6 +21,19 @@
     export default {
         data() {
             return {
+                content: ""
+            }
+        },
+        methods: {
+            searchMovie() {
+                this.$store.commit("page_load", true);
+                this.$store.dispatch("getSearchText", this.content);
+                this.$store.dispatch("getSearchDetail")
+                this.$router.push({
+                    path:'/search', 
+                    query:{searchText: this.content}
+                })
+                this.content = "";
             }
         }
     }
@@ -57,7 +70,8 @@
         margin-left: 30px;
     }
     .search button{
-        margin-left: 10px;
+        /*margin-left: 10px;*/
+        /*margin-left:-10px;*/
         height: 35px;
         padding:5px 20px 5px 20px;
         background-color: #2277aa;
