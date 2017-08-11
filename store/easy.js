@@ -35,9 +35,9 @@ export default{
             store.commit(SEARCH_TEXT, text);
         },
         getSearchDetail(store){
-            vm.$http.get('/api/movie/search?q='+this.searchText)
+            vm.$http.get('/api/movie/search?q='+store.state.searchText)
                 .then((res) => {
-                    this.searchList = res.data;
+                    store.state.searchList = res.data;
                     store.commit(PAGE_LOAD, false);
                 })
         },

@@ -26,7 +26,7 @@
         },
         methods: {
             searchMovie() {
-                this.$store.commit("page_load", true);
+                this.$store.dispatch("page_load", true);
                 this.$store.dispatch("getSearchText", this.content);
                 this.$store.dispatch("getSearchDetail")
                 this.$router.push({
