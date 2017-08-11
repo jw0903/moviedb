@@ -40,11 +40,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
                 import 'element-ui/lib/theme-default/index.css';
                 vue.use(elementUI);
                 
-                
-4 项目中所用到的数据由豆瓣提供的api获得，需更改/config/index.js中的proxytable设置，跨域获取豆瓣api数据
+4 由于项目中应用了vuex 因此也需要进行vuex的安装 npm install vuex --save
 
 
-5 /router/index.js进行路由的设置
+5 项目中所用到的数据由豆瓣提供的api获得，需更改/config/index.js中的proxytable设置，跨域获取豆瓣api数据
+
+
+6 /router/index.js进行路由的设置
   先对网站路由有大概的思考，比如，这个项目总共有5个页面，需要路由进行跳转
   具体为：
   
