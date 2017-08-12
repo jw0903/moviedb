@@ -2,7 +2,7 @@
     <div class="top">
         <div class="content" >
             <div class="search">
-                <h1>豆瓣电影</h1>
+                <h1><router-link to="/">豆瓣电影</router-link></h1>
                 <el-input type="text" placeholder="电影、演员、影院、电视剧" v-model="content" @keyup.enter.native="searchMovie"></el-input>
                 <el-button icon="search" @click="searchMovie"></el-button>
             </div>
@@ -61,6 +61,10 @@
     .search h1{
         vertical-align: middle;
         display: inline;
+    }
+    .search h1 a{
+        text-decoration: none;
+        color:#2277aa;
     }
     .search .el-input{
         display: inline-block;

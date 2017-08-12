@@ -11,7 +11,7 @@
                 </li>
                 <!-- 电影名称 -->
                 <li class="film_name">
-                    <a><span @click='showDeatil(subject.id)' style="cursor:pointer">{{subject.title}}</span></a>
+                    <a><span @click='showDeatil(subject.id)'>{{subject.title}}</span></a>
                 </li>
                 <!-- 电影评分 -->
                 <li class="film_rate">
@@ -59,6 +59,12 @@
     }
     .file_pic a img:hover{
         transform: scale(1.1);
+    }
+    .film_name a span{
+        cursor: pointer;
+    }
+    .film_name a span:hover{
+        color: #2277aa;
     }
     .movie_show{
         display: flex;
