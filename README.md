@@ -70,7 +70,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
          
          
          /movieDetail (电影详情页面)
-         由点击电影主页面、upcoming页面、top250页面中的电影图片跳转而得到，this.$router.push{path:'/movieDetail',query:{id:id}})进行跳转。
+         由点击电影主页面、upcoming页面、top250页面中的电影图片跳转而得到，this.$router.push{path:'/movieDetail',query:{id:id}})进行跳转。进入电影详情界面之后，显示详情。新增点击电影图片展示大图功能，点击演员图片显示演员资料功能
          
          
          /search (电影搜索结果页面)
