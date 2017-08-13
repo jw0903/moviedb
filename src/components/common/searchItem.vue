@@ -10,23 +10,14 @@
                 <div class="summary">
                     <ul>
                         <li class="title"><a @click="showDeatil(subject.id)" >{{subject.title}}({{subject.year}})</a></li>
+                        <li class="rate">
+                            <el-rate disabled v-model="subject.rating.average"></el-rate>
+                            <span>{{subject.rating.average*2}}</span>
+                        </li>
                         <li><span v-for="item in subject.genres">{{item}} </span></li>
                         <li><span v-for="item in subject.casts">{{item.name}} </span></li>
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="add">
-                <p>添加豆瓣没有的电影/电视剧···</p>
-                <p><span>>添加电影/电视剧</span></p>
-                <p><span>>添加影人</span></p>
-            </div>
-            <div class="search">
-                <p>相关搜索·····</p>
-                <p><span>>搜索相关的图书</span></p>
-                <p><span>>搜索相关的音乐</span></p>
-                <p><span>>搜索相关的舞台剧</span></p>
             </div>
         </div>
     </div>
@@ -97,25 +88,10 @@
         background:#3377AA;
         color:#fff;
     }
-    .right{
-        height: 300px;
-        /*border:1px solid #333;*/
-        display: flex;
-        flex-direction: column;
+    .rate .el-rate{
+        display: inline-block;
     }
-    .add p,.search p{
-        color:#3377aa;
-        margin-bottom: 20px;
-    }
-    .right .add p:nth-child(1), .search p:nth-child(1){
-        font-size: 20px;
-        color:#007722;
-    }
-    .add p:nth-child(n+1), .search p:nth-child(n+1){
-        cursor:pointer;
-    }
-    .add p span:hover, .search p span:hover{
-        background-color: #3377aa;
-        color:#fff;
+    .rate span{
+        vertical-align:middle;
     }
 </style>

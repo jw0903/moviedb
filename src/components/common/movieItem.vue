@@ -15,7 +15,9 @@
                 </li>
                 <!-- 电影评分 -->
                 <li class="film_rate">
-                    <span>评分：{{subject.rating.average}}</span>
+                    <el-rate v-model="subject.rating.average" disabled>
+                    </el-rate>
+                    <span class="rateNum">{{subject.rating.average*2}}</span>
                 </li>
                 <!-- 选座位 -->
                 <li class="film_button">
@@ -29,11 +31,19 @@
 <script>
     export default{
         props:{
-            data:Object
+            data:Object,
+            value5: 7.5,
         },
         methods: {
             showDeatil(id) {
                 this.$router.push({path:'/moviesDetail',query:{id:id}})
+            },
+        },
+        computed: {
+            rate(rate) {
+                let score = rate / 2.0;
+                console.log("分数：" + score);
+                return score;
             }
         }
     }
@@ -65,6 +75,15 @@
     }
     .film_name a span:hover{
         color: #2277aa;
+    }
+    .film_rate .el-rate{
+        display: inline-block;
+    }
+
+    .film_rate .rateNum {
+        vertical-align:middle;
+        color:#ff9900;
+        font-size: 15px;
     }
     .movie_show{
         display: flex;

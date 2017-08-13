@@ -16,6 +16,11 @@
                             <span>主演：</span>
                             <span class="actorList" v-for="item in movieDetail.casts" @click="showImg(item.id)">{{item.name}} </span>
                         </p>
+                        <p class="film_rate">
+                            <span>评分：</span>
+                            <el-rate disabled  v-model='movieDetail.rating.average'></el-rate>
+                            <span>{{movieDetail.rating.average*2}}</span>
+                        </p>
                         <p>
                             <span>类型：</span>
                             <span v-for="item in movieDetail.genres">{{item}}</span>
@@ -59,7 +64,7 @@
                     <p>{{movieDetail.title}}的影人······</p>
                     <ul>
                         <li v-for="item in movieDetail.casts">
-                            <img :src="item.avatars.small" @click='showImg(item.id)' />
+                            <img title="点击查看详情" :src="item.avatars.small" @click='showImg(item.id)' />
                         </li>
                     </ul>
                 </div>
@@ -163,14 +168,32 @@
         height: 187px;
         width:125px;
     }
+    .text{
+        padding-left:10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     .text p{
-        margin:8px 0;
+        /*margin:8px 0;*/
     }
     .text p span{
         color:#3377AA;
     }
     .text p span:first-child{
         color:#666666;
+    }
+    .film_rate{
+        display: flex;
+        align-items: center;
+        height: 21px;
+        line-height: 21px;
+    }
+    .film_rate span{
+        display: inline-block;
+    }
+    .film_rate .el-rate{
+        display: inline-block;
     }
     .actorList:hover{
         cursor:pointer;
