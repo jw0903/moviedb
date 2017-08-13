@@ -28,6 +28,7 @@ export default{
             vm.$http.get('/api/movie/subject/'+store.state.id)
             .then(res => {
               store.commit(MOVING_DETAIL, res.data);
+              // store.state.movieDetail.map(score => score.rating.average = score.rating.average/2);
               store.commit(PAGE_LOAD, false);
             })
         },
@@ -67,6 +68,7 @@ export default{
     },
     getters: {
         movieDetail: state => {
+            state.movieDetail.rating.average = state.movieDetail.rating.average/2;
             return state.movieDetail;
         },
         pageLoading: state => {
@@ -79,6 +81,7 @@ export default{
             return state.searchText;
         },
         searchList: state => {
+            state.searchList.subjects.map(score => score.rating.average = score.rating.average/2)
             return state.searchList;
         }
     }
