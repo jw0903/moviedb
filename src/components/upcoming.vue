@@ -1,13 +1,7 @@
 <template>
-    <div class="content">
-        <div class="conTop">
-            <p><span>电影票 - </span><span>北京</span>  <span>【切换城市】</span></p>
-        </div>
-        <div class="conleft" v-loading="itemLoading">
+    <div class="content" v-loading="itemLoading">
+        <div >
             <movieItem :data="upcoming"></movieItem>
-        </div>
-        <div class="conright">
-            
         </div>
     </div>
 </template>
@@ -29,6 +23,7 @@
             this.$http.get('/api/movie/coming_soon')
                 .then((res) => {
                     this.upcoming = res.data;
+                    this.upcoming.subjects.map(sub => sub.rating.average = sub.rating.average/2);
                     this.$store.dispatch('item_load', false);
                 }, (err) => {
                     console.log(err);
@@ -41,3 +36,10 @@
         }
     }
 </script>
+
+<style scoped>
+    .content{
+        min-height: 400px;
+    }
+</style>
+

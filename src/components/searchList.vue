@@ -21,13 +21,6 @@
         },
         mounted () {
             this.$store.dispatch("getSearchDetail");
-            // let searchtext = this.$route.query.searchText;
-            // console.log("这是搜索信息"+searchtext);
-            // this.$http.get('/api/movie/search?q='+searchtext)
-            //     .then((res) => {
-            //         this.searchList = res.data;
-            //         console.log(this.searchList);
-            //     })
         },
         computed: {
             ...mapGetters([
