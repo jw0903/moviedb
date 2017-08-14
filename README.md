@@ -28,6 +28,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ![Image text](https://github.com/lin559/moviedb/raw/master/img-folder/3.png)
 ![Image text](https://github.com/lin559/moviedb/raw/master/img-folder/4.png)
 ![Image text](https://github.com/lin559/moviedb/raw/master/img-folder/6.png)
+点击图片查看海报大图
+![Image text](https://github.com/lin559/moviedb/raw/master/img-folder/7.png)
+点击演员图片查看演员资料
+![Image text](https://github.com/lin559/moviedb/raw/master/img-folder/8.png)
 过程
 1 vue init webpack 'project-name' //初始化项目
 
