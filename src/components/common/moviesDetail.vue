@@ -42,9 +42,9 @@
                         <span>评价：<el-rate show-text></el-rate></span>
                     </p>
                     <p>
-                        <i class="el-icon-message"></i> <span>写短评</span>
-                        <i class="el-icon-edit"></i> <span>写影评</span>
-                        <i class="el-icon-plus"></i> <span>提问题</span>
+                        <i class="el-icon-message" @click="showCom"></i> <span @click="showCom">写短评</span>
+                        <i class="el-icon-edit" @click="showCom"></i> <span @click="showCom">写影评</span>
+                        <i class="el-icon-plus" @click="showCom"></i> <span @click="showCom">提问题</span>
                         <span>分享到</span>
                         <!-- <el-collapse @change="handleChange"  style="width:100px;border:none;float:left;">
                           <el-collapse-item title="分享到" name="1">
@@ -86,6 +86,11 @@
                       <li>家庭成员:</li>
                   </ul>
               </div>
+              <div class="addcom" v-if="showcom">
+                  <h1>编写评论</h1>
+                  <input type="text"/>
+                  <input type="button" value="添加" />
+              </div>
             </div> 
           </transition>
         </div>    
@@ -103,6 +108,7 @@
                 actorMsg: {},
                 showpic : false,
                 showactor: false,
+                showcom: false
             }
         },
         methods: {
@@ -121,10 +127,15 @@
                         console.log(err);
                     });
             },
+            showCom () {
+                this.isShow = true;
+                this.showcom = true;
+            },
             closeMyself () {
                 this.isShow = false;
                 this.showpic = false;
                 this.showactor = false;
+                this.showcom = false;
             },
         },
         mounted () {
@@ -267,7 +278,7 @@
 }
 .dialog-cover {
   background: #000;
-  opacity: .3;
+  opacity: .5;
   position: fixed;
   z-index: 5;
   top: 0;
@@ -276,7 +287,7 @@
   height: 100%;
 }
 .dialog-content {
-  /*width:25%;*/
+  width:25%;
   position: fixed;
   /*min-height: 400px;*/
   top: 20%;
@@ -303,5 +314,25 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+.addcom{
+    height: 200px;
+    color:#ddd;
+    border:5px solid #2277aa;
+    border-radius:10px;
+}
+.addcom h1{
+    color: #2277aa;
+}
+.addcom input[type='text'] {
+    height: 35px;
+}
+.addcom input[type='button'] {
+    height: 40px;
+    color: #fff;
+    width: 80px;
+    background-color: #2277aa;
+    border:2px solid #2277aa;
+    border-radius: 4px;
 }
 </style>
