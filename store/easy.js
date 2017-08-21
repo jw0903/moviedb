@@ -15,9 +15,12 @@ export default{
         pageload: true,
         itemload: true,
         searchText: "",
-        searchList: {},
+        searchList: {
+            subjects: []
+        },
         movieDetail:{
-
+            rating: {},
+            images: {}
         }
     },
     actions: {
